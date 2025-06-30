@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Page transitions */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .page.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Gallery animations */
+        .gallery-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.8s ease forwards;
+            animation-delay: calc(0.1s * var(--delay));
+        }
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Button styling */
+        .nav-btn {
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">Travel Explorer</h1>
+            <nav class="flex space-x-4">
+                <button class="nav-btn px-4 py-2 bg-white text-blue-600 rounded-lg font-medium" onclick="showPage('home')">Главная</button>
+                <button class="nav-btn px-4 py-2 bg-transparent text-white hover:bg-white hover:text-blue-600 rounded-lg font-medium" onclick="showPage('tips')">Советы</button>
+                <button class="nav-btn px-4 py-2 bg-transparent text-white hover:bg-white hover:text-blue-600 rounded-lg font-medium" onclick="showPage('gallery')">Галерея</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="mb-8">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a4e2ef4c-d96a-4ef6-adac-579a3ca7667c.png" alt="Beautiful beach with palm trees and crystal clear water under sunny sky" class="rounded-lg shadow-md w-full mb-6">
+                </div>
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Добро пожаловать на сайт о путешествиях!</h2>
+                <p class="text-lg text-gray-600 mb-6">
+                    Здесь вы найдёте полезные советы и красивые фотографии для вдохновения. Мы делимся нашим опытом, чтобы сделать ваши путешествия более комфортными и незабываемыми.
+                </p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-white rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-3 text-blue-600">Советы путешественникам</h3>
+                        <p class="text-gray-600">Узнайте как правильно собрать чемодан, выбрать отель и сэкономить в поездке.</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-3 text-blue-600">Фотогалерея</h3>
+                        <p class="text-gray-600">Посмотрите красивые места со всего мира для вашего следующего путешествия.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips Page -->
+        <div id="tips" class="page">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">Полезные советы для путешественников</h2>
+                
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <h3 class="text-xl font-semibold text-blue-600 mb-3">1. Как собрать идеальный чемодан</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Составьте список необходимых вещей заранее</li>
+                        <li>Используйте специальные органайзеры для вещей</li>
+                        <li>Берите универсальную одежду, которую можно комбинировать</li>
+                        <li>Не забудьте зарядные устройства и адаптеры</li>
+                        <li>Размещайте тяжелые вещи внизу чемодана</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <h3 class="text-xl font-semibold text-blue-600 mb-3">2. Как выбрать хороший отель</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Всегда читайте отзывы реальных гостей</li>
+                        <li>Обращайте внимание на расположение (близость к транспорту)</li>
+                        <li>Проверяйте, что включено в стоимость</li>
+                        <li>Сравнивайте цены на разных платформах</li>
+                        <li>Рассмотрите альтернативы (апартаменты, гестхаусы)</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-blue-600 mb-3">3. Как экономить в путешествиях</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li>Покупайте билеты заранее</li>
+                        <li>Пользуйтесь местным транспортом вместо такси</li>
+                        <li>Питайтесь там, где едят местные</li>
+                        <li>Используйте туристические карты и проездные</li>
+                        <li>Следите за скидками и акциями авиакомпаний</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Page -->
+        <div id="gallery" class="page">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">Фотогалерея путешествий</h2>
+                <p class="text-gray-600 mb-8">Посмотрите красивые места из разных уголков мира, которые стоит посетить.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="gallery-item" style="--delay: 1">
+                        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f6c2af0b-88b3-4f3a-819a-875a34b10470.png" alt="Eiffel Tower at sunset with pink sky in Paris" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-semibold text-lg">Париж, Франция</h3>
+                                <p class="text-gray-600">Романтичный закат у Эйфелевой башни</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" style="--delay: 2">
+                        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8ff0371b-e66b-4296-a1ac-1d9152fe8268.png" alt="Golden Temple surrounded by water in Kyoto during autumn" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-semibold text-lg">Киото, Япония</h3>
+                                <p class="text-gray-600">Золотой павильон в осенних красках</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" style="--delay: 3">
+                        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d8c548d2-0e7d-4779-a6f2-302f71fe0463.png" alt="Colorful houses on cliffs in Santorini with blue domes" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-semibold text-lg">Санторини, Греция</h3>
+                                <p class="text-gray-600">Бело-голубые домики на склонах</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" style="--delay: 4">
+                        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/84c3f85a-008a-4945-bf47-710bfe29e92d.png" alt="Grand Canyon with orange rock formations under blue sky" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-semibold text-lg">Гранд-Каньон, США</h3>
+                                <p class="text-gray-600">Величественные скалы на закате</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" style="--delay: 5">
+                        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8aca60dd-0277-4607-8781-dd8710db55cb.png" alt="Sydney Opera House and Harbour Bridge at golden hour" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-semibold text-lg">Сидней, Австралия</h3>
+                                <p class="text-gray-600">Оперный театр в лучах закатного солнца</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" style="--delay: 6">
+                        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c1ef5939-5785-43d0-ac6e-6fde36595818.png" alt="Venetian canals with gondolas and historic buildings" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-semibold text-lg">Венеция, Италия</h3>
+                                <p class="text-gray-600">Романтичные каналы и гондолы</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2023 Travel Explorer. Все права защищены.</p>
+            <p class="mt-2 text-gray-400">Сайт создан для любителей путешествий</p>
+        </div>
+    </footer>
+
+    <script>
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update active button
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if (btn.textContent.trim() === 
+                    (pageId === 'home' ? 'Главная' : 
+                     pageId === 'tips' ? 'Советы' : 'Галерея')) {
+                    btn.classList.remove('bg-transparent', 'text-white', 'hover:bg-white', 'hover:text-blue-600');
+                    btn.classList.add('bg-white', 'text-blue-600');
+                } else {
+                    btn.classList.remove('bg-white', 'text-blue-600');
+                    btn.classList.add('bg-transparent', 'text-white', 'hover:bg-white', 'hover:text-blue-600');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // If gallery, trigger animations
+            if (pageId === 'gallery') {
+                // Reset animations by removing and re-adding the items
+                const items = document.querySelectorAll('.gallery-item');
+                items.forEach(item => {
+                    item.style.animation = 'none';
+                    void item.offsetWidth; // Trigger reflow
+                    item.style.animation = '';
+                });
+            }
+        }
+    </script>
+</body>
+</html>
+
